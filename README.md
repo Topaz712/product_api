@@ -1,24 +1,62 @@
-# README
+Exercise 1: Basic Model Creation and CRUD
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create a new Rails API project named "product_api".
+`rails new product_api --api`
 
-Things you may want to cover:
+Objective: Understand basic model creation and perform CRUD operations using Rails console.
 
-* Ruby version
+Tasks:
 
-* System dependencies
+Generate a Product Model: Attributes - name:string, price:decimal
+`rails g model Product name:string price:decimal`
 
-* Configuration
+Perform CRUD Operations:
 
-* Database creation
+Create a new product with the following attributes:
+- Product 1
+  name: "Apple"
+  price: 1.99
+`product1 = Product.create(name: "Apple", price: 1.99)`
+  
+- Product 2
+  name: "Orange"
+  price: 2.99
+`product2 = Product.create(name: "Orange", price: 2.99)`
 
-* Database initialization
+- Product 3
+  name: "Banana"
+  price: 3.99
+`product3 = Product.create(name: "Banana", price: 3.99)`
 
-* How to run the test suite
+- Product 4
+  name: "Grapes"
+  price: 4.99
+`product4 = Product.create(name: "Grapes", price: 4.99)`
 
-* Services (job queues, cache servers, search engines, etc.)
+- Product 5
+  name: "Pineapple"
+  price: 5.99
+`product5 = Product.create(name: "Pineapple", price: 5.99)`
 
-* Deployment instructions
+Get all products.
+`Product.all`
 
-* ...
+Get the product with the id of 3.
+`Product.find(3)`
+
+Get product by name "Apple".
+`product1 = Product.find_by(name: "Apple")`
+but also
+`Product.find_by(name: "Apple")` works
+
+Update the product's name of 'Apple to "Lime".
+`product1.update(name: "Lime")`
+
+Delete the product with the id of 1.
+`Product.find(1).delete`
+
+Delete all products whose price is greater than 3. Use the where method.
+`Product.where("price > 3").delete_all`
+- .delete_all - deletes all records that match the condition
+- .delete - will only delete the first record found
+
